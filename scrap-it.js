@@ -14,7 +14,7 @@ function loadJS(FILE_URL, async = true) {
   });
 }
 
-funcion getHarbalGens(name = 'harbalGenLinks'){
+function getHarbalGens(name = 'harbalGenLinks'){
   var harbalGenLinks = new PouchDB(name)
   loadJS('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js')
   var doc = $(document).find('a.hoverable-block')
