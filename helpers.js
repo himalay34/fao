@@ -72,3 +72,20 @@ function allDocs(db, cb) {
     })
     .catch((err) => cb(err));
 }
+
+function addButton(text, onclick, cssObj, id = "btn") {
+  cssObj = cssObj || {
+    position: "absolute",
+    bottom: "7%",
+    right: "4%",
+    "z-index": 3,
+  };
+  let button = document.createElement("button"),
+    btnStyle = button.style;
+  document.body.appendChild(button);
+  button.innerHTML = text;
+  button.onclick = onclick;
+  btnStyle.position = "absolute";
+  Object.keys(cssObj).forEach((key) => (btnStyle[key] = cssObj[key]));
+  return button;
+}
