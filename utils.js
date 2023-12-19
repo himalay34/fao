@@ -24,7 +24,37 @@ function getHarbalGens(name = 'harbalGenLinks'){
   })
   harbalGenLinks.bulkDocs(docs).then(console.log).catch(console.error)
 }
+function exportdb(db) {
+    db.allDocs({ include_docs: true }, (error, doc) => {
+      if (error) console.error(error);
+      else
+        download(
+          JSON.stringify(doc.rows.map(({ doc }) => doc)),
+          db.name + new Date().toJSON().split("T")[0] + ".json",
+          "text/plain"
+        );
+    });
+  }
 
+function download(data, filename, type = "text/plain") {
+    var file = new Blob([data], { type: type });
+    if (window.navigator.msSaveOrOpenBlob)
+      // IE10+
+      window.navigator.msSaveOrOpenBlob(file, filename);
+    else {
+      // Others
+      var a = document.createElement("a"),
+        url = URL.createObjectURL(file);
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      }, 0);
+    }
+  }
 function getNum(str) {
     var num = str.replace(/[^0-9]/g, "");
     return parseInt(num, 10);
