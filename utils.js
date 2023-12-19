@@ -24,3 +24,10 @@ function getHarbalGens(name = 'harbalGenLinks'){
   })
   harbalGenLinks.bulkDocs(docs).then(console.log).catch(console.error)
 }
+
+function getNum(str) {
+    var num = str.replace(/[^0-9]/g, "");
+    return parseInt(num, 10);
+}
+
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
