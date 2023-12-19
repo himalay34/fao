@@ -89,3 +89,19 @@ function addButton(text, onclick, cssObj, id = "btn") {
   Object.keys(cssObj).forEach((key) => (btnStyle[key] = cssObj[key]));
   return button;
 }
+
+function generateRandom(min = 40000, max = 55000) {
+  // find diff
+  let difference = max - min;
+
+  // generate random number
+  let rand = Math.random();
+
+  // multiply with difference
+  rand = Math.floor(rand * difference);
+
+  // add with min value
+  rand = rand + min;
+
+  return rand;
+}
