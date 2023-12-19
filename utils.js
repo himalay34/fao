@@ -31,3 +31,6 @@ function getNum(str) {
 }
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+loadJS("//cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js", true);
+loadJS("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js");
